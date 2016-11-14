@@ -565,13 +565,21 @@
     <Content Include="Content\Images\icon-magnifier.png" />
     <Content Include="Content\Images\our-story.jpg" />
     <Content Include="Content\Styles\Site.css" />
+    <Content Include="Content\Styles\Site.min.css">
+      <DependentUpon>Site.css</DependentUpon>
+    </Content>
     <Content Include="Global.asax" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
     <None Include="Gruntfile.js" />
     <Content Include="Content\Styles\Menu.less" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\cafe-feedback.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
@@ -600,6 +608,7 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Views\Shared\CafeFeedbackPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\ApplicationConfig.cs" />
@@ -617,6 +626,8 @@
     <Compile Include="Infrastructure\IOutputCacheDependencies.cs" />
     <Compile Include="Infrastructure\OutputCacheDependencies.cs" />
     <Compile Include="Models\Articles\ArticleViewModel.cs" />
+    <Compile Include="Models\Generated\Forms\CafeFeedback.generated.cs" />
+    <Compile Include="Models\Generated\Forms\CafeFeedbackRepositoryModel.generated.cs" />
     <Compile Include="Models\Generated\Pages\ArticleSection.generated.cs" />
     <Compile Include="Models\Generated\Pages\ArticleSectionProvider.generated.cs" />
     <Compile Include="Models\Generated\Pages\CafeSection.generated.cs" />
@@ -634,10 +645,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Extensions\HtmlHelperExtensions.cs" />
+    <Compile Include="Repositories\ICafeFeedbackRepository.cs" />
     <Compile Include="Repositories\ICountryRepository.cs" />
     <Compile Include="Repositories\IFormItemRepository.cs" />
     <Compile Include="Repositories\Implementation\KenticoAboutUsRepository.cs" />
     <Compile Include="Repositories\Implementation\KenticoArticleRepository.cs" />
+    <Compile Include="Repositories\Implementation\KenticoCafeFeedbackRepository.cs" />
     <Compile Include="Repositories\Implementation\KenticoCafeRepository.cs" />
     <Compile Include="Repositories\Implementation\KenticoContactRepository.cs" />
     <Compile Include="Repositories\Implementation\KenticoCountryRepository.cs" />

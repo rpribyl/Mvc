@@ -25,5 +25,11 @@ namespace DancingGoat.Models.Cafes
             get; 
             set;
         }
+
+
+        /// <summary>
+        /// View model of a cafe feedback.
+        /// </summary>
+        public CafeFeedback CafeFeedback { get; set; }
     }
 }

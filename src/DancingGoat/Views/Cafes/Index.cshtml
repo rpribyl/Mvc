@@ -9,7 +9,7 @@
     @foreach (var cafe in Model.CompanyCafes)
     {
         <div class="col-md-6">
-            <div class="cafe-image-tile cursor-hand js-scroll-to-map" data-address="@cafe.Contact.City,@cafe.Contact.Street">
+            <div class="cafe-image-tile" data-address="@cafe.Contact.City,@cafe.Contact.Street">
                 <div class="cafe-image-tile-image-wrapper">
                     @if (cafe.Photo != null)
                     {
@@ -27,6 +27,12 @@
                     </address>
                     <p>@cafe.Contact.Phone</p>
                     <p>@cafe.Note</p>
+                    <div class="cafe-feedback-container">
+                        <a href="javascript:void(0)" class="cafe-feedback-heading cafe-tile-address-anchor">Give feedback</a>
+                        <div class="xs-hidden sm-hidden md-hidden lg-hidden clear">
+                            @Html.Partial("~/Views/Shared/CafeFeedbackPartial.cshtml", cafe.CafeFeedback)
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -65,4 +71,5 @@
 @section Scripts {
     <script src="https://maps.googleapis.com/maps/api/js"></script>
     @Scripts.Render("~/Scripts/map.js")
+    @Scripts.Render("~/Scripts/cafe-feedback.js")
 }

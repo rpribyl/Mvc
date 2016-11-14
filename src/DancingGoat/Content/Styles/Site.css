@@ -1,4 +1,4 @@
-@font-face {
+﻿@font-face {
   font-family: 'PT Serif';
   font-style: normal;
   font-weight: 700;
@@ -1737,7 +1737,7 @@ footer {
 }
 @media (min-width: 400px) {
   .cafe-image-tile {
-    height: 200px;
+    min-height: 240px;
     overflow: hidden;
   }
   .cafe-image-tile-image-wrapper {
@@ -1757,7 +1757,7 @@ footer {
 @media (min-width: 768px) {
   /* md size */
   .cafe-image-tile {
-    height: 220px;
+    min-height: 240px;
   }
   .cafe-image-tile-image-wrapper {
     width: 150px;
@@ -1770,7 +1770,7 @@ footer {
 @media (min-width: 1112px) {
   /* lg size */
   .cafe-image-tile {
-    height: 200px;
+    min-height: 240px;
   }
   .cafe-image-tile-image-wrapper {
     width: 200px;
@@ -1894,4 +1894,8 @@ footer {
   .search-tile-title {
     margin-top: 0;
   }
+}
+.cafe-feedback-container input,
+.cafe-feedback-container textarea {
+  color: black;
 }

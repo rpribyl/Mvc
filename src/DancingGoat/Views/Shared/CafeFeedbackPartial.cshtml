@@ -1,0 +1,14 @@
+
+@model DancingGoat.Models.Cafes.CafeFeedback
+@using (Html.BeginForm("SendFeedback", "Cafes"))
+{
+    @Html.AntiForgeryToken()
+    <div class="FormPanel">
+        @Html.ValidationSummary(true, "", new { @class = "ErrorLabel" })
+        @Html.HiddenFor(model => model.CafeId)
+        @Html.ValidatedEditorFor(model => model.OverallRating)
+        @Html.ValidatedEditorFor(model => model.ReviewText)
+        @Html.ValidatedEditorFor(model => model.Email)
+        <input type="submit" value="@ResHelper.GetString("General.Submit")" class="btn btn-primary" />
+    </div>
+}

@@ -19,13 +19,15 @@ namespace DancingGoat.Controllers
         private readonly ICafeRepository mCafeRepository;
         private readonly ICountryRepository mCountryRepository;
         private readonly IOutputCacheDependencies mOutputCacheDependencies;
+        private readonly ICafeFeedbackRepository mCafeFeedbackRepository;
 
 
-        public CafesController(ICafeRepository cafeRepository, ICountryRepository countryRepository, IOutputCacheDependencies outputCacheDependencies)
+        public CafesController(ICafeRepository cafeRepository, ICountryRepository countryRepository, IOutputCacheDependencies outputCacheDependencies, ICafeFeedbackRepository cafeFeedbackRepository)
         {
             mCountryRepository = countryRepository;
             mCafeRepository = cafeRepository;
             mOutputCacheDependencies = outputCacheDependencies;
+            mCafeFeedbackRepository = cafeFeedbackRepository;
         }
 
 
@@ -80,7 +82,14 @@ namespace DancingGoat.Controllers
             {
                 Photo = cafe.Fields.Photo,
                 Note = cafe.Fields.AdditionalNotes,
-                Contact = CreateContactModel(cafe)
+                Contact = CreateContactModel(cafe),
+                CafeFeedback = new Models.Cafes.CafeFeedback()
+                {
+                    CafeId = cafe.CafeID,
+                    OverallRating = 10,
+                    ReviewText = string.Empty,
+                    Email = string.Empty
+                }
             });
         }
 
@@ -104,6 +113,30 @@ namespace DancingGoat.Controllers
             }
 
             return model;
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SendFeedback(CafeFeedback feedback)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Index");
+            }
+            else
+            {
+                try
+                {
+                    mCafeFeedbackRepository.InsertCafeFeedbackFormItem(feedback);
+                }
+                catch
+                {
+                    return View("~/Views/Contacts/Error.cshtml");
+                }
+
+                return RedirectToAction("ThankYou", "Contacts");
+            }
         }
     }
 }
