@@ -71,3 +71,5 @@
 - Fix NuGet dependency typo in Kentico.Newsletter.Web.Mvc package. This package could not be installed separately into projects with NuGet dependencies specified in the project.json file.
 [#16](https://github.com/Kentico/Mvc/pull/16)
 
+test
+
